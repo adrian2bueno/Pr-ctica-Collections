@@ -3,6 +3,7 @@ public class Producte {
     float preu;
     int codibarres;
 
+    //
     public Producte(String nom, float preu, int codibarres) {
         this.nom = nom;
         this.preu = preu;

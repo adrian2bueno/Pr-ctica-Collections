@@ -3,6 +3,7 @@ import java.util.Date;
 public class Alimentacio extends Producte{
     int dataCaducitat;
 
+    //
     public Alimentacio(String nom, float preu, int codibarres, String dtCaducitat) {
         super(nom, preu, codibarres);
         this.dataCaducitat = dataCaducitat;
