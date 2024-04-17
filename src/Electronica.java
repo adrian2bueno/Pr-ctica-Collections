@@ -6,4 +6,16 @@ public class Electronica extends Producte{
         super(nom, preu, codibarres);
         this.garantia = garantia;
     }
+
+    public int getGarantia() {
+        return garantia;
+    }
+
+    public void setGarantia(int garantia) {
+        this.garantia = garantia;
+    }
+    public String toString() {
+        return super.toString() +
+                ",\nPVP= " + pvp();
+    }
 }

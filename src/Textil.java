@@ -6,4 +6,16 @@ public class Textil extends Producte{
         super(nom, preu, codibarres);
         this.composicio = composicio;
     }
+
+    public String getComposicio() {
+        return composicio;
+    }
+
+    public void setComposicio(String composicio) {
+        this.composicio = composicio;
+    }
+    public String toString() {
+        return super.toString() +
+                ",\nPVP= " + pvp();
+    }
 }
