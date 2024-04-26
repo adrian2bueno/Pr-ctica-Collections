@@ -1,21 +1,21 @@
-public class Electronica extends Producte{
-    int garantia;
+public class Electronica extends Producte {
+    private int diesGarantia;
 
     //
     public Electronica(String nom, float preu, int codibarres, int garantia) {
         super(nom, preu, codibarres);
-        this.garantia = garantia;
+        this.diesGarantia = garantia;
     }
 
-    public int getGarantia() {
-        return garantia;
+    public int getDiesGarantia() {
+        return diesGarantia;
     }
 
-    public void setGarantia(int garantia) {
-        this.garantia = garantia;
+    public void setDiesGarantia(int diesGarantia) {
+        this.diesGarantia = diesGarantia;
     }
-    public String toString() {
-        return super.toString() +
-                ",\nPVP= " + pvp();
+
+    public float getPreu() {
+        return (float) (super.getPreu() + super.getPreu() * (this.getDiesGarantia() / 365) * 0.1);
     }
 }
