@@ -18,4 +18,5 @@ public class Electronica extends Producte {
     public float getPreu() {
         return (float) (super.getPreu() + super.getPreu() * (this.getDiesGarantia() / 365) * 0.1);
     }
+
 }

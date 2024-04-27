@@ -1,7 +1,10 @@
+import java.util.Comparator;
+import java.util.Objects;
 public abstract class Producte {
-    String nom;
-    float preu;
-    int codibarres;
+    //TODO: implements Comparable
+    private String nom;
+    private float preu;
+    private int codibarres;
 
     //
     public Producte(String nom, float preu, int codibarres) {
@@ -42,8 +45,29 @@ public abstract class Producte {
     public float pvp() {
         return preu + (preu * (21 / 100));
     }
-    public  String getInfo() {
+
+    public String toString() {
         return nom + " -> " + numProductes() + "    " + pvp();
 
     }
+
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Producte producte)) return false;
+
+        return Objects.equals(getCodibarres(), producte.getCodibarres()) && Objects.equals(getPreu(), producte.getPreu());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(getCodibarres());
+    } public static class ComparadorNom implements Comparator<Producte> {
+        @Override
+        public int compare(Producte p1, Producte p2) {
+            return p1.getNom().compareTo(p2.getNom());
+        }
+}
+
+
+
 }
