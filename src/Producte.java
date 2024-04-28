@@ -2,12 +2,11 @@ import java.util.Comparator;
 import java.util.Objects;
 public abstract class Producte {
     //TODO: implements Comparable
-    private String nom;
+    private String nom, codibarres;
     private float preu;
-    private int codibarres;
 
     //
-    public Producte(String nom, float preu, int codibarres) {
+    public Producte(String nom, float preu, String codibarres) {
         this.nom = nom;
         this.preu = preu;
         this.codibarres = codibarres;
@@ -29,11 +28,11 @@ public abstract class Producte {
         this.preu = preu;
     }
 
-    public int getCodibarres() {
+    public String getCodibarres() {
         return codibarres;
     }
 
-    public void setCodibarres(int codibarres) {
+    public void setCodibarres(String codibarres) {
         this.codibarres = codibarres;
     }
 

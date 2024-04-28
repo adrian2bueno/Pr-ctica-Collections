@@ -4,7 +4,7 @@ public class Textil extends Producte implements Comparable<Textil>{
     private String composicio;
 
     //
-    public Textil(String nom, float preu, int codibarres, String composicio) {
+    public Textil(String nom, float preu, String codibarres, String composicio) {
         super(nom, preu, codibarres);
         this.composicio = composicio;
     }

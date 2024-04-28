@@ -5,7 +5,7 @@ public class Alimentacio extends Producte{
     private int dataCaducitat;
     private static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-    public Alimentacio(String nom, float preu, int codibarres, int dataCaducitat) {
+    public Alimentacio(String nom, float preu, String codibarres, int dataCaducitat) {
         super(nom, preu, codibarres);
         this.dataCaducitat = dataCaducitat;
     }
