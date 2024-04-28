@@ -4,7 +4,6 @@ public class Main {
     public static void main(String[] args) throws Exception {
         //Supermercat.menuPrincipal();
         int opcio,opcioP;
-        String op3;
 
         Scanner scan = new Scanner(System.in);
         Supermercat supermercat = new Supermercat();
