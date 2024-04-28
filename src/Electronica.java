@@ -1,10 +1,12 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Electronica extends Producte {
     private int diesGarantia;
 
-    //
-    public Electronica(String nom, float preu, String codibarres, int garantia) {
+    public Electronica(String nom, float preu, String codibarres, int diesGarantia) {
         super(nom, preu, codibarres);
-        this.diesGarantia = garantia;
+        this.diesGarantia = diesGarantia;
     }
 
     public int getDiesGarantia() {
@@ -18,5 +20,4 @@ public class Electronica extends Producte {
     public float getPreu() {
         return (float) (super.getPreu() + super.getPreu() * (this.getDiesGarantia() / 365) * 0.1);
     }
-
 }
