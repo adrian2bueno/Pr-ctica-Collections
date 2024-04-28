@@ -11,7 +11,7 @@ public class Supermercat {
     private List<Electronica> llistaElectronics = new ArrayList<>();
 
     public void afegirProducte(String tipusProducte) throws Exception {
-        if (llistaProductes.size() == 100) {
+        if (llistaProductes.size() > 100) {
             recollirExcepcions("Has arribat al maxim de 100 productes");
         }
 
@@ -25,7 +25,6 @@ public class Supermercat {
 
         if (!(nomProducte.matches("[a-zA-Z]+"))) recollirExcepcions("El nom te que estar compost per lletres: ");
 
-
         System.out.print("Preu: ");
         String preu = scan.next();
 
@@ -36,7 +35,7 @@ public class Supermercat {
             recollirExcepcions("Preu incorrecte: ");
         }
 
-        System.out.print("Codi de barres (6 caracters): ");
+        System.out.print("Codi de barres : ");
         String codiBarres = scan.next().toUpperCase();
 
         if (!(codiBarres.matches("[A-Z0-9]{6}"))) recollirExcepcions("Codi de barres incorrecte (6 caracters): ");
@@ -86,7 +85,6 @@ public class Supermercat {
         }
         llistaProductes.add(producte);
     }
-
     public void passarCaixa() throws Exception {
         List<Producte> llistaProductes2 = new ArrayList<>();
 
@@ -116,7 +114,6 @@ public class Supermercat {
                 if (producte instanceof Alimentacio) {
                     unitats = Collections.frequency(llistaAliments, producte);
                 } else if (producte instanceof Textil) {
-                    comprovarPreuTextil(producte);
                     unitats = Collections.frequency(llistaTextils, producte);
                 } else if (producte instanceof Electronica) {
                     unitats = Collections.frequency(llistaElectronics, producte);
@@ -141,7 +138,6 @@ public class Supermercat {
 
         } else recollirExcepcions("No hi han productes al carro");
     }
-
     public void mostrarCarret() throws Exception {
         Map<String, Integer> carret = new HashMap<>();
 
@@ -164,6 +160,8 @@ public class Supermercat {
         } else recollirExcepcions("El carret no pot estar buit");
     }
 
+
+
     private String buscarProductes(String codiBarres) {
         Optional<Producte> producteTrobat = llistaProductes.stream()
                 .filter(producte -> producte.getCodiBarres().equals(codiBarres))
@@ -176,26 +174,6 @@ public class Supermercat {
         }
     }
 
-    private void comprovarPreuTextil(Producte producte) throws Exception {
-        try {
-            Scanner preusTextils = new Scanner(new File("./updates/UpdateTextilPrices.dat"));
-
-            while (preusTextils.hasNextLine()) {
-                String linia = preusTextils.nextLine();
-                String codiBarresCorrecte = linia.split(":")[0];
-                String preuCorrecte = linia.split(":")[1];
-
-                if (codiBarresCorrecte.equals(producte.getCodiBarres())) {
-                    producte.setPreu(Float.parseFloat(preuCorrecte));
-                    preusTextils.close();
-                    break;
-                }
-            }
-
-        } catch (FileNotFoundException e) {
-            recollirExcepcions("L'arxiu de preus de textil no s'ha trobat");
-        }
-    }
 
     private void recollirExcepcions(String missatge) throws Exception {
         File carpetaLogs = new File("./logs");
